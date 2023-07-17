@@ -1,21 +1,23 @@
 // import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { SendgridService } from './service/sendgrid.service';
+import { MailDataRequired } from '@sendgrid/mail';
 
 @Controller('sendgrid')
 export class SendgridController {
   constructor(private readonly sendgridService: SendgridService) {}
-  // sendgridService: SendEmailInterface;
-  // @Post()
-  // sendEmail(@Body() body: SendEmailInterface) {
-  //   return this.sendgridService.create(body);
-  // }
 
   @Post()
-  async create(@Body() body): Promise<boolean> {
-    console.log(body);
-    console.log(body.from);
-    return await this.sendgridService.create(body);
+  async create(@Body() data: MailDataRequired): Promise<string> {
+    const emailData = {
+      to: data.to,
+      from: data.from,
+      subject: data.subject,
+      text: data.text,
+    };
+    await this.sendgridService.create(emailData);
+
+    return 'gato';
   }
 
   @Get()
