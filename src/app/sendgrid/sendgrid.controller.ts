@@ -1,4 +1,3 @@
-// import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { SendgridService } from './service/sendgrid.service';
 import { MailDataRequired } from '@sendgrid/mail';
@@ -17,11 +16,11 @@ export class SendgridController {
     };
     await this.sendgridService.create(emailData);
 
-    return 'gato';
+    return 'Formulario correto';
   }
 
   @Get()
   findAll(): string {
-    return 'This action returns all cats';
+    return 'Formulario localizado';
   }
 }

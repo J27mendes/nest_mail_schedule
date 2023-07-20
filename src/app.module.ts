@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { SendgridModule } from './app/sendgrid/sendgrid.module';
 import { MailModule } from './app/mail/mail.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { LoginModule } from './app/login/login.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ScheduleModule } from '@nestjs/schedule';
     ScheduleModule.forRoot(),
     SendgridModule,
     MailModule,
+    LoginModule,
   ],
   controllers: [],
   providers: [],
